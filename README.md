@@ -20,4 +20,5 @@ input.cnf : input file
 [cn] 
 
 ## Reference
-[SAT solver](https://github.com/sukrutrao/SAT-Solver-CDCL)
+[SAT solver](https://github.com/sukrutrao/SAT-Solver-CDCL) <br></br>
+[Janota1 and Silva] Mikol´aˇs Janota1 and Joao Marques-Silva.Solving QBF by Clause Selection.In IJCAI 2015.
