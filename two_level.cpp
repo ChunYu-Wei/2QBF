@@ -186,19 +186,39 @@ int main(void){
 		} 
 		cout << endl;
 		#endif
-		
-
+	
 	        if(tao[0] == 0){
+			cout << "******************************" << endl;
+			cout << "Final result" << endl;
+			cout << "******************************" << endl;
 			cout << "QBF Result: true"  << endl;
 			return 0;
 		}
+
+		vector<bool> S;
+		for(int i = 0;i < clause_num;i++){
+			bool selected = 1;
+			for(int j = 0;j < phi[i]->size();j++){
+				int li = (*phi[i])[j];
+				if(uni_or_exi_modify[abs(li)] == 1 && li*tao[abs(li)-1] > 0)
+					selected = false;
+			}
+			S.push_back(selected);
+		}
+
+		#ifdef DEBUG
+		cout << "-----------------------" << endl;
+		cout << "S" << endl;
+		for(int i = 0;i < S.size();i++) cout << S[i] << " ";
+		cout << endl;
+		#endif
 
 		//find phi_prime(existential part)
 		vector< vector<int>> phi_prime;
 		for(int i = 0;i < clause_num;i++){
 			vector<int> cl;
 			int id = phi[i]->getid();
-			if(tao[id-1] > 0){
+			if(S[id-1] == 1){
 				for(int j = 0;j < phi[i]->size();j++){
 					int li = (*phi[i])[j];
 					if(uni_or_exi_modify[abs(li)] == 0){
@@ -237,6 +257,9 @@ int main(void){
 		#endif
 
 		if(u[0] == 0){
+			cout << "******************************" << endl;
+			cout << "Final result" << endl;
+			cout << "******************************" << endl;
 			cout << "QBF Result: false"  << endl;
 			return 0;		
 		}
