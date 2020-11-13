@@ -7,7 +7,7 @@ g++ -std=c++11 ./2QBF.cpp -o 2QBF
 ./2QBF < input.cnf
 
 ## File Description
-solver.h : SAT solver used when solving 2QBF <br></br>
+solver.h : DPLL SAT solver used when solving 2QBF <br></br>
 2QBF.cpp : solving 2QBF <br></br>
 input.cnf : input file 
 
